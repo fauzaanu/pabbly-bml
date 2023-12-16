@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project.">
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-    </list>
+    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +72,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/fauzaanu/PycharmProjects/bml-flask-pabbly",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -151,6 +148,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Flask server.pabml" />
       <item itemvalue="Flask server.bml-flask-pabbly" />
       <item itemvalue="Python tests.Unittests in bml-flask-pabbly" />
     </list>
@@ -186,6 +184,7 @@
       <workItem from="1702718510739" duration="17061000" />
       <workItem from="1702745946050" duration="1929000" />
       <workItem from="1702747912494" duration="2024000" />
+      <workItem from="1702749961331" duration="1706000" />
     </task>
     <task id="LOCAL-00055" summary="FIXTURES">
       <option name="closed" value="true" />

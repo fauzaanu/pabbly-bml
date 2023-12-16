@@ -31,7 +31,7 @@ Follow these steps to deploy the application on the Digital Ocean Apps Platform:
 
 ## Environment Variables
 
-You need to set some environment variables before running the application. You can usually set these in an `.env` file, or your hosting provider's settings:
+Normally you would set these environment variables in a .env file. However, the Digital Ocean Apps Platform has a built-in way to set environment variables. You can set them in the "Environment Variables" section of the app settings.
 
 ```bash
 BML_API_KEY = "The API key for Bank of Maldives."
