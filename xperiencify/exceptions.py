@@ -1,0 +1,2 @@
+class InvalidMagicLink(Exception):
+    pass

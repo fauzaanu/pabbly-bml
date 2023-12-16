@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project.">
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="false" />
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HttpClientSelectedEnvironments">
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http" environment="test" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="Project files ( without Venv )" pattern="(!ext[&lt; Python 3.11 (bml-flask-pabbly) &gt;]:*&amp;&amp;!file:__pycache__//*&amp;&amp;!file:__pycache__/*||file[bml-flask-pabbly]:*)&amp;&amp;!file[bml-flask-pabbly]:.idea/*||file[bml-flask-pabbly]:bankofmaldives/*||file[bml-flask-pabbly]:json_samples/*||file[bml-flask-pabbly]:Subscriptions/*||file[bml-flask-pabbly]:templates/*||file[bml-flask-pabbly]:xperiencify/*" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ZO7NxmEvR3uGmH9Uo0yMKaLb7M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Flask server.bml-flask-pabbly.executor": "Run",
+    "Flask server.pabml.executor": "Run",
+    "HTTP Request.get-requests | Force own filename for saved response file.executor": "Run",
+    "Python tests.Doctests in ziya_custom_redirect.executor": "Run",
+    "Python tests.Unittests in bml-flask-pabbly.executor": "Run",
+    "Python.hash_url.executor": "Run",
+    "Python.python main.py.executor": "Run",
+    "Python.xtestx_app.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/fauzaanu/PycharmProjects/bml-flask-pabbly",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rest.client.default.execution.environment": "test",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fauzaanu\PycharmProjects\bml-flask-pabbly\xperiencify" />
+      <recent name="C:\Users\fauzaanu\PycharmProjects\pabml\json_samples" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="python main.py" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Flask server.bml-flask-pabbly">
+    <configuration name="bml-flask-pabbly" type="Python.FlaskServer">
+      <module name="bml-flask-pabbly" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\fauzaanu\PycharmProjects\bml-flask-pabbly\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (bml-flask-pabbly)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pabml" type="Python.FlaskServer">
+      <module name="pabml" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in bml-flask-pabbly" type="tests" factoryName="Unittests" nameIsGenerated="true">
+      <module name="bml-flask-pabbly" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\fauzaanu\PycharmProjects\bml-flask-pabbly\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (bml-flask-pabbly)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Flask server.bml-flask-pabbly" />
+      <item itemvalue="Python tests.Unittests in bml-flask-pabbly" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-7a29c1521ef0-c986f194a52a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.11799.298" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="" />
+      <created>1702281235648</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702281235648</updated>
+      <workItem from="1702281236801" duration="133000" />
+      <workItem from="1702281385278" duration="782000" />
+      <workItem from="1702282562106" duration="60671000" />
+      <workItem from="1702485563266" duration="4461000" />
+      <workItem from="1702493206319" duration="9135000" />
+      <workItem from="1702513047156" duration="10153000" />
+      <workItem from="1702561576990" duration="352000" />
+      <workItem from="1702561945776" duration="8264000" />
+      <workItem from="1702591216060" duration="670000" />
+      <workItem from="1702591902558" duration="11727000" />
+      <workItem from="1702667207238" duration="1667000" />
+      <workItem from="1702670733355" duration="1852000" />
+      <workItem from="1702717475187" duration="930000" />
+      <workItem from="1702718510739" duration="17061000" />
+      <workItem from="1702745946050" duration="1929000" />
+      <workItem from="1702747912494" duration="2024000" />
+    </task>
+    <task id="LOCAL-00055" summary="FIXTURES">
+      <option name="closed" value="true" />
+      <created>1702409883325</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1702409883326</updated>
+    </task>
+    <task id="LOCAL-00056" summary="List indices must be int">
+      <option name="closed" value="true" />
+      <created>1702410865989</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1702410865989</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Works, so refactoring">
+      <option name="closed" value="true" />
+      <created>1702413921067</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1702413921067</updated>
+    </task>
+    <task id="LOCAL-00058" summary="adding X letter">
+      <option name="closed" value="true" />
+      <created>1702465325712</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1702465325712</updated>
+    </task>
+    <task id="LOCAL-00059" summary="added payment failure">
+      <option name="closed" value="true" />
+      <created>1702481532500</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1702481532500</updated>
+    </task>
+    <task id="LOCAL-00060" summary="fail payment update">
+      <option name="closed" value="true" />
+      <created>1702484590872</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1702484590872</updated>
+    </task>
+    <task id="LOCAL-00061" summary="update gitignore">
+      <option name="closed" value="true" />
+      <created>1702488901853</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1702488901853</updated>
+    </task>
+    <task id="LOCAL-00062" summary="redirect url">
+      <option name="closed" value="true" />
+      <created>1702494972796</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1702494972796</updated>
+    </task>
+    <task id="LOCAL-00063" summary="redirect url">
+      <option name="closed" value="true" />
+      <created>1702496926160</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1702496926160</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Key error">
+      <option name="closed" value="true" />
+      <created>1702497184886</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1702497184886</updated>
+    </task>
+    <task id="LOCAL-00065" summary="redirect using product id">
+      <option name="closed" value="true" />
+      <created>1702497819542</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1702497819542</updated>
+    </task>
+    <task id="LOCAL-00066" summary="redirect">
+      <option name="closed" value="true" />
+      <created>1702498665101</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1702498665101</updated>
+    </task>
+    <task id="LOCAL-00067" summary="redirect">
+      <option name="closed" value="true" />
+      <created>1702499521207</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1702499521207</updated>
+    </task>
+    <task id="LOCAL-00068" summary="exceptions">
+      <option name="closed" value="true" />
+      <created>1702499551958</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1702499551958</updated>
+    </task>
+    <task id="LOCAL-00069" summary="logging">
+      <option name="closed" value="true" />
+      <created>1702499882462</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1702499882462</updated>
+    </task>
+    <task id="LOCAL-00070" summary="entirely remove logging">
+      <option name="closed" value="true" />
+      <created>1702500150583</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1702500150583</updated>
+    </task>
+    <task id="LOCAL-00071" summary="final push">
+      <option name="closed" value="true" />
+      <created>1702502105559</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1702502105559</updated>
+    </task>
+    <task id="LOCAL-00072" summary="huge refactor">
+      <option name="closed" value="true" />
+      <created>1702548868121</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1702548868121</updated>
+    </task>
+    <task id="LOCAL-00073" summary="alert on deployment">
+      <option name="closed" value="true" />
+      <created>1702549212402</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1702549212402</updated>
+    </task>
+    <task id="LOCAL-00074" summary="markdown">
+      <option name="closed" value="true" />
+      <created>1702549550121</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1702549550121</updated>
+    </task>
+    <task id="LOCAL-00075" summary="markdown">
+      <option name="closed" value="true" />
+      <created>1702549720054</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1702549720054</updated>
+    </task>
+    <task id="LOCAL-00076" summary="implement json based response">
+      <option name="closed" value="true" />
+      <created>1702559060896</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1702559060896</updated>
+    </task>
+    <task id="LOCAL-00077" summary="unexpected status code">
+      <option name="closed" value="true" />
+      <created>1702559302585</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1702559302585</updated>
+    </task>
+    <task id="LOCAL-00078" summary="unexpected status code">
+      <option name="closed" value="true" />
+      <created>1702559476716</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1702559476716</updated>
+    </task>
+    <task id="LOCAL-00079" summary="201 is the expected transaction code">
+      <option name="closed" value="true" />
+      <created>1702559821150</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1702559821150</updated>
+    </task>
+    <task id="LOCAL-00080" summary="transaction json">
+      <option name="closed" value="true" />
+      <created>1702559974369</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1702559974369</updated>
+    </task>
+    <task id="LOCAL-00081" summary="more fixed">
+      <option name="closed" value="true" />
+      <created>1702560319497</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1702560319497</updated>
+    </task>
+    <task id="LOCAL-00082" summary="use url, not short url">
+      <option name="closed" value="true" />
+      <created>1702560766816</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1702560766816</updated>
+    </task>
+    <task id="LOCAL-00083" summary="default redirect URLS">
+      <option name="closed" value="true" />
+      <created>1702560976019</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1702560976019</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1702561999308</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1702561999308</updated>
+    </task>
+    <task id="LOCAL-00085" summary="fix">
+      <option name="closed" value="true" />
+      <created>1702565105694</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1702565105694</updated>
+    </task>
+    <task id="LOCAL-00086" summary="200 error fix">
+      <option name="closed" value="true" />
+      <created>1702565573803</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1702565573803</updated>
+    </task>
+    <task id="LOCAL-00087" summary="redirect">
+      <option name="closed" value="true" />
+      <created>1702565909821</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1702565909822</updated>
+    </task>
+    <task id="LOCAL-00088" summary="fix redirect url">
+      <option name="closed" value="true" />
+      <created>1702567027977</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1702567027977</updated>
+    </task>
+    <task id="LOCAL-00089" summary="pretend">
+      <option name="closed" value="true" />
+      <created>1702574215836</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1702574215836</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Update function documentation and user guide in README&#10;&#10;The update significantly improves the documentation for several functions in 'app.py', providing a much clearer understanding of their operation. The README.md file's instructions for app deployment and usage have also been modified to suit the specific features of the BML Payment Integration application.">
+      <option name="closed" value="true" />
+      <created>1702595828991</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1702595828991</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Update README to reflect BML Payment Integration&#10;&#10;The existing README content has been replaced with specific instructions and details about the deployment and usage of the BML Payment Integration application. It now includes clearer setup steps, the necessary environment variables, and a description of how the application handles transactions.">
+      <option name="closed" value="true" />
+      <created>1702595841048</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1702595841048</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Refactor code and update comments in `app.py`&#10;&#10;Code has been restructured for better readability and to improve efficiency in `app.py`. Comment documentation for methods has been revised for clarity, with some discrepancies in method labels corrected and unnecessary details removed. Route mappings and error handling have been improved within some methods.">
+      <option name="closed" value="true" />
+      <created>1702597004056</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1702597004056</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Add student creation in Xperiencify platform and remove test_app file&#10;&#10;This update includes the creation of a new student in the Xperiencify platform whenever a payment confirmation from BML is received. This action requires an Experiencify API key. If it's not available or an invalid magic link is generated, the user will be redirected to a default URL. The `test_app.py` file has been removed as it's no longer necessary and new exceptions have been added to handle invalid magic links. In the subscription module, functionalities to retrieve customer and product details have also been added.">
+      <option name="closed" value="true" />
+      <created>1702726344372</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1702726344373</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Refactor code indentation for student creation logic&#10;&#10;The student creation if condition has been realigned to improve readability in the app.py file. This change ensures the logic for creation using the &quot;Experiencify&quot; API key is more readable, and consistent with other code blocks.">
+      <option name="closed" value="true" />
+      <created>1702729419006</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1702729419007</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Update error handling and return order in subscription.py&#10;&#10;The exception handling logic in 'checkoutpage' API request has been improved to better handle unsuccessful API responses. Additionally, the order of return from 'invoice_data' has been altered from (customer_id, product_id) to (product_id, customer_id) for alignment with other parts of the code.">
+      <option name="closed" value="true" />
+      <created>1702730831221</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1702730831221</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Refactor code to use passed API key&#10;&#10;The function load_dotenv and the variable API_KEY were removed from the code as they were not necessary. Instead, the API key is now directly passed to the required functions as a string. This makes the code much cleaner and reduces dependencies on external variables or processes.">
+      <option name="closed" value="true" />
+      <created>1702731518401</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1702731518401</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Refactor course ID verification in redirect.py&#10;&#10;The verification check for course IDs has been enhanced in redirect.py. The updated code now explicitly checks within the dictionary keys for a matching course ID. Additionally, the generation of the string of course IDs has been altered for better readability and clarity.">
+      <option name="closed" value="true" />
+      <created>1702732491412</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1702732491412</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Refactor create_student function in redirect.py&#10;&#10;This change clarifies data types for create_student function parameters and refactors the way course_ids are compiled to be more efficient. The course title is now specifically converted to a string to prevent possible type-related issues.">
+      <option name="closed" value="true" />
+      <created>1702734494747</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1702734494747</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Update magic link validation in redirect.py&#10;&#10;The magic link validation condition in the redirect.py module has been updated. The code now checks if the magic link starts with &quot;https:&quot; instead of a specific URL. Furthermore, if the link is not valid, it raises an InvalidMagicLink exception instead of returning an error message.">
+      <option name="closed" value="true" />
+      <created>1702736573397</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1702736573397</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Simplify URL verification for student creation&#10;&#10;The previous check for https:// at the beginning of the redirect URL inside the try block of create_student function was removed. Now the code only logs an error and defaults to DEFAULT_REDIRECT_URL if the URL does not start with https://. This makes the logic easier to follow.">
+      <option name="closed" value="true" />
+      <created>1702737003359</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1702737003359</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Add redirection logging in app.py&#10;&#10;An error_logging call has been added to log the final redirection url. This change provides visibility into where the user is being redirected to after an action is performed.">
+      <option name="closed" value="true" />
+      <created>1702738053836</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1702738053836</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Rename variable for clarity in redirect.py&#10;&#10;The variable 'course_id' in the redirect.py script has been renamed to 'course_identifier'. This change has been made to improve code readability and make the variable's purpose more explicit. Now its use throughout the rest of the code will be more intuitive.">
+      <option name="closed" value="true" />
+      <created>1702738817415</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1702738817415</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project.">
+      <option name="closed" value="true" />
+      <created>1702749341893</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1702749341893</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="transaction json" />
+    <MESSAGE value="more fixed" />
+    <MESSAGE value="use url, not short url" />
+    <MESSAGE value="default redirect URLS" />
+    <MESSAGE value="Initial Commit" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="200 error fix" />
+    <MESSAGE value="redirect" />
+    <MESSAGE value="fix redirect url" />
+    <MESSAGE value="pretend" />
+    <MESSAGE value="Update function documentation and user guide in README&#10;&#10;The update significantly improves the documentation for several functions in 'app.py', providing a much clearer understanding of their operation. The README.md file's instructions for app deployment and usage have also been modified to suit the specific features of the BML Payment Integration application." />
+    <MESSAGE value="Update README to reflect BML Payment Integration&#10;&#10;The existing README content has been replaced with specific instructions and details about the deployment and usage of the BML Payment Integration application. It now includes clearer setup steps, the necessary environment variables, and a description of how the application handles transactions." />
+    <MESSAGE value="Refactor code and update comments in `app.py`&#10;&#10;Code has been restructured for better readability and to improve efficiency in `app.py`. Comment documentation for methods has been revised for clarity, with some discrepancies in method labels corrected and unnecessary details removed. Route mappings and error handling have been improved within some methods." />
+    <MESSAGE value="Add student creation in Xperiencify platform and remove test_app file&#10;&#10;This update includes the creation of a new student in the Xperiencify platform whenever a payment confirmation from BML is received. This action requires an Experiencify API key. If it's not available or an invalid magic link is generated, the user will be redirected to a default URL. The `test_app.py` file has been removed as it's no longer necessary and new exceptions have been added to handle invalid magic links. In the subscription module, functionalities to retrieve customer and product details have also been added." />
+    <MESSAGE value="Add hashing functionality and refactor code&#10;&#10;A new file, hash_url.py is introduced which contains functionality for hashing user credentials for encryption and decryption. In the app.py file, the indentation in error handling section related to student creation using &quot;Experiencify&quot; API key has been fixed to improve readability and maintain consistency in the code block structure." />
+    <MESSAGE value="Refactor code indentation for student creation logic&#10;&#10;The student creation if condition has been realigned to improve readability in the app.py file. This change ensures the logic for creation using the &quot;Experiencify&quot; API key is more readable, and consistent with other code blocks." />
+    <MESSAGE value="Update error handling and return order in subscription.py&#10;&#10;The exception handling logic in 'checkoutpage' API request has been improved to better handle unsuccessful API responses. Additionally, the order of return from 'invoice_data' has been altered from (customer_id, product_id) to (product_id, customer_id) for alignment with other parts of the code." />
+    <MESSAGE value="Refactor code to use passed API key&#10;&#10;The function load_dotenv and the variable API_KEY were removed from the code as they were not necessary. Instead, the API key is now directly passed to the required functions as a string. This makes the code much cleaner and reduces dependencies on external variables or processes." />
+    <MESSAGE value="Refactor course ID verification in redirect.py&#10;&#10;The verification check for course IDs has been enhanced in redirect.py. The updated code now explicitly checks within the dictionary keys for a matching course ID. Additionally, the generation of the string of course IDs has been altered for better readability and clarity." />
+    <MESSAGE value="Refactor create_student function in redirect.py&#10;&#10;This change clarifies data types for create_student function parameters and refactors the way course_ids are compiled to be more efficient. The course title is now specifically converted to a string to prevent possible type-related issues." />
+    <MESSAGE value="Update magic link validation in redirect.py&#10;&#10;The magic link validation condition in the redirect.py module has been updated. The code now checks if the magic link starts with &quot;https:&quot; instead of a specific URL. Furthermore, if the link is not valid, it raises an InvalidMagicLink exception instead of returning an error message." />
+    <MESSAGE value="Simplify URL verification for student creation&#10;&#10;The previous check for https:// at the beginning of the redirect URL inside the try block of create_student function was removed. Now the code only logs an error and defaults to DEFAULT_REDIRECT_URL if the URL does not start with https://. This makes the logic easier to follow." />
+    <MESSAGE value="Add redirection logging in app.py&#10;&#10;An error_logging call has been added to log the final redirection url. This change provides visibility into where the user is being redirected to after an action is performed." />
+    <MESSAGE value="Rename variable for clarity in redirect.py&#10;&#10;The variable 'course_id' in the redirect.py script has been renamed to 'course_identifier'. This change has been made to improve code readability and make the variable's purpose more explicit. Now its use throughout the rest of the code will be more intuitive." />
+    <MESSAGE value="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/bml_flask_pabbly$xtestx_app.coverage" NAME="xtestx_app Coverage Results" MODIFIED="1702738140223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/bml_flask_pabbly$python_main_py.coverage" NAME="python main.py Coverage Results" MODIFIED="1702747303065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal" />
+    <SUITE FILE_PATH="coverage/pabml$test.coverage" NAME="test Coverage Results" MODIFIED="1702399036150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/bml_flask_pabbly$hash_url.coverage" NAME="hash_url Coverage Results" MODIFIED="1702728982674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pabml$pabml.coverage" NAME="pabml Coverage Results" MODIFIED="1702501552956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/bml_flask_pabbly$bml_flask_pabbly.coverage" NAME="bml-flask-pabbly Coverage Results" MODIFIED="1702749264289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/bml_flask_pabbly$Doctests_in_ziya_custom_redirect.coverage" NAME="Doctests in ziya_custom_redirect Coverage Results" MODIFIED="1702638193285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/bml_flask_pabbly$Unittests_in_bml_flask_pabbly.coverage" NAME="Unittests in bml-flask-pabbly Coverage Results" MODIFIED="1702748168046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>
