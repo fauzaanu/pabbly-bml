@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project." />
+    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Update instructions for setting environment variables&#10;&#10;Revised the instructions in README.md on how to set environment variables, specifying that users can use Digital Ocean Apps Platform's built-in functionality. Made changes to .idea/workspace.xml to reflect the removal of json sample files and a Python script named 'helpers.py' for improved project maintainability.">
+      <change afterPath="$PROJECT_DIR$/.README_images/project_overview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.README_images/routes.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +43,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;fauzaanu&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e2981ab0-2fb1-4c39-b8eb-cb76d597b1af" />
+        <option name="url" value="https://github.com/fauzaanu/pabbly-bml.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="HttpClientSelectedEnvironments">
     <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http" environment="test" />
   </component>
@@ -59,31 +78,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Flask server.bml-flask-pabbly.executor": "Run",
-    "Flask server.pabml.executor": "Run",
-    "HTTP Request.get-requests | Force own filename for saved response file.executor": "Run",
-    "Python tests.Doctests in ziya_custom_redirect.executor": "Run",
-    "Python tests.Unittests in bml-flask-pabbly.executor": "Run",
-    "Python.hash_url.executor": "Run",
-    "Python.python main.py.executor": "Run",
-    "Python.xtestx_app.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/fauzaanu/PycharmProjects/bml-flask-pabbly",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rest.client.default.execution.environment": "test",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Flask server.bml-flask-pabbly.executor&quot;: &quot;Run&quot;,
+    &quot;Flask server.pabml.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.get-requests | Force own filename for saved response file.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Doctests in ziya_custom_redirect.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Unittests in bml-flask-pabbly.executor&quot;: &quot;Run&quot;,
+    &quot;Python.hash_url.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python main.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.xtestx_app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fauzaanu/PycharmProjects/bml-flask-pabbly&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rest.client.default.execution.environment&quot;: &quot;test&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fauzaanu\PycharmProjects\bml-flask-pabbly\xperiencify" />
@@ -185,14 +206,8 @@
       <workItem from="1702745946050" duration="1929000" />
       <workItem from="1702747912494" duration="2024000" />
       <workItem from="1702749961331" duration="1706000" />
-    </task>
-    <task id="LOCAL-00055" summary="FIXTURES">
-      <option name="closed" value="true" />
-      <created>1702409883325</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1702409883326</updated>
+      <workItem from="1702755388337" duration="646000" />
+      <workItem from="1702757329405" duration="2451000" />
     </task>
     <task id="LOCAL-00056" summary="List indices must be int">
       <option name="closed" value="true" />
@@ -578,7 +593,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702749341893</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Update instructions for setting environment variables&#10;&#10;Revised the instructions in README.md on how to set environment variables, specifying that users can use Digital Ocean Apps Platform's built-in functionality. Made changes to .idea/workspace.xml to reflect the removal of json sample files and a Python script named 'helpers.py' for improved project maintainability.">
+      <option name="closed" value="true" />
+      <created>1702755444263</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1702755444264</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,7 +622,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="transaction json" />
     <MESSAGE value="more fixed" />
     <MESSAGE value="use url, not short url" />
     <MESSAGE value="default redirect URLS" />
@@ -624,7 +646,8 @@
     <MESSAGE value="Add redirection logging in app.py&#10;&#10;An error_logging call has been added to log the final redirection url. This change provides visibility into where the user is being redirected to after an action is performed." />
     <MESSAGE value="Rename variable for clarity in redirect.py&#10;&#10;The variable 'course_id' in the redirect.py script has been renamed to 'course_identifier'. This change has been made to improve code readability and make the variable's purpose more explicit. Now its use throughout the rest of the code will be more intuitive." />
     <MESSAGE value="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project." />
+    <MESSAGE value="Update instructions for setting environment variables&#10;&#10;Revised the instructions in README.md on how to set environment variables, specifying that users can use Digital Ocean Apps Platform's built-in functionality. Made changes to .idea/workspace.xml to reflect the removal of json sample files and a Python script named 'helpers.py' for improved project maintainability." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update instructions for setting environment variables&#10;&#10;Revised the instructions in README.md on how to set environment variables, specifying that users can use Digital Ocean Apps Platform's built-in functionality. Made changes to .idea/workspace.xml to reflect the removal of json sample files and a Python script named 'helpers.py' for improved project maintainability." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bml_flask_pabbly$xtestx_app.coverage" NAME="xtestx_app Coverage Results" MODIFIED="1702738140223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

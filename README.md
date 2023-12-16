@@ -8,12 +8,20 @@
 1. [Introduction](#introduction)
 2. [Deployment to Digital Ocean Apps Platform](#deployment-to-digital-ocean-apps-platform)
 3. [Environment Variables](#environment-variables)
+    * [How to get BML API Key](#how-to-get-bml-api-key)
+    * [How to get Pabbly API Key](#how-to-get-pabbly-api-key)
+    * [How to get Telegram Bot Token](#how-to-get-telegram-bot-token)
+    * [How to get Telegram Chat ID](#how-to-get-telegram-chat-id)
+    * [How to get Xperiencify API Key](#how-to-get-xperiencify-api-key)
 4. [Routes Explanation](#routes-explanation)
+    * [Route Handlers](#route-handlers)
+    * [Application Functions](#application-functions)
 5. [Error Handling](#error-handling)
 
 ## Introduction
 
 This application manages subscriptions and payments for products by interacting with Pabbly payment gateway and Bank of Maldives (BML) services. Optional integration with the Xperiencify learning management system is also offered.
+![](.README_images/project_overview.png)
 
 ## Deployment to Digital Ocean Apps Platform
 
@@ -62,12 +70,33 @@ You need to get the API key from Xperiencify. Please see the [xperiencify api do
 
 The application has several endpoints that it uses to handle different parts of the subscription and payment process:
 
-**/pabbly**: Processes a user's subscription and initiates their payment.
+### Route Handlers
+![](.README_images/routes.png)
 
-**/hook**: Manages the response from the bank after a payment has been processed.
+1. **'/' (GET)**: The root route returns some logging data of the incoming request and then redirects to the default redirect URL. As soon as the app is initiated, the message “App started” will be sent as well.
 
-**/thankyou**: Gives feedback to the user after they've completed their payment, and either confirms their payment on both systems or gives an error.
+2. **'/pabbly' (GET)**: It processes a customer's payment through a Pabbly-hosted page. The Pabbly API returns invoice data that are then used to form a payload for the Bank of Maldives (BML) API. This payload gets sent back to the BML instance, which responds with a payment URL. Customer then gets redirected to that payment URL to finalize their payment.
+
+3. **'/hook' (POST)**: This is a webhook endpoint that is triggered by the Bank of Maldives when they send a POST request on payment completion. This function checks the status of the transaction, then processes and records it if it has been confirmed.
+
+4. **'/thankyou' (GET)**: Followed by a successful payment, a GET request is made to this route. The handler function checks if the payment approval from BML matches the state of the payment. If the payment is confirmed, the handler records the payment in the Pabbly system, and creates a redirect link that sends the customer to a thank you page. If the payment is cancelled by the bank, an error is logged and the customer is redirected to a default URL.
+
+
+## Application Functions (For Developers)
+
+1. **error_logging(message: str) -> bool**: This method logs errors to a specified Telegram chat through the Telegram Bot API.
+
+2. **process_subscription_pabbly()**: This function retrieves the transaction and customer details from Pabbly's payment gateway, and then structures the retrieved data into a format that the BML payment gateway can understand.
+
+3. **record_payment(transaction_id: str) -> str**: Queries the transaction to get the local ID and product ID, and then checks the invoice status. If invoice status is 'success', it returns product ID. If invoice status is 'created', this function records the payment and returns product ID.
+
+4. **bml_hook()**: This is the method mapped for BML's webhook endpoint. It gets the transaction ID, queries BML to get transaction information. If all checks out, it records the payment and then returns the result.
+
+5. **thankyou()**: This function handles the /thankyou.php route and handles transaction outcome (CONFIRMED or CANCELLED), and redirects the user accordingly.
+
+These functions are created with modular programming practices in mind by grouping the related functions into corresponding namespaces. This makes the code base easier to maintain and develop.
 
 ## Error Handling
 
 Error messages are sent to a specific Telegram chat using the Telegram Bot API. Go to DigitalOcean App Console logs section if an alert does not appear on telegram.
+
