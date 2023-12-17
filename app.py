@@ -92,7 +92,7 @@ def process_subscription_pabbly():
             "paymentType": "UNSCHEDULED",
             "recurringFrequency": "UNSCHEDULED"
         },
-        "redirectUrl": "https://bml.fauzaanu.com/thankyou.php"
+        "redirectUrl": str(os.getenv("DOMAIN")) + "/thankyou"
     }
 
     transaction = bml_instance.create_transaction(payload)
@@ -292,7 +292,6 @@ def index():
         The `index()` method will be called when a GET request is made to the '/' route.
     """
 
-
     user_agent = request.headers.get('User-Agent')
     ip = request.remote_addr
     cloudflare = request.headers.get('CF-Connecting-IP')
@@ -303,6 +302,7 @@ def index():
 
     error_logging(log)
     return redirect(os.getenv('DEFAULT_REDIRECT_URL'))
+
 
 # as app starts, send a message to telegram
 error_logging("APP STARTED")
