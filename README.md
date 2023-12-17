@@ -49,6 +49,7 @@ DEFAULT_REDIRECT_URL = "Fall back URL"
 TELEGRAM_BOT_TOKEN = "Your Telegram bot token."
 TELEGRAM_CHAT_ID = "Your Telegram chat ID."
 XPERIENCIFY_API_KEY = "The API key for Xperiencify. This is optional. If not provided, the Xperiencify integration will be disabled."
+DOMAIN = "Your domain name."
 ```
 
 ### How to get BML API Key
@@ -65,6 +66,9 @@ Contact [@jsondumpbot](https://t.me/jsondumpbot) on Telegram to get your chat ID
 
 ### How to get Xperiencify API Key
 You need to get the API key from Xperiencify. Please see the [xperiencify api docs](https://howto.xperiencify.com/article.php?article=123) for more information.
+
+### What is the DEFAULT_REDIRECT_URL
+
 
 ## Routes Explanation
 

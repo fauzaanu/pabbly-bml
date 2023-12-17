@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Update README with detailed documentation on routes and functions&#10;&#10;The README is updated with comprehensive descriptions of each route and function in the application, including diagrams illustrating the project's architecture. This documentation enhances clarity and aids in easier future development and maintenance of the code base.">
+    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Update redirect URL and cleanup .idea/workspace.xml &#10;&#10;The redirect URL is now constructed dynamically from an environment variable, improving flexibility across deployments. Also, unnecessary or outdated details in .idea/workspace.xml have been removed, improving the clarity and maintainability of this file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,15 +205,7 @@
       <workItem from="1702747912494" duration="2024000" />
       <workItem from="1702749961331" duration="1706000" />
       <workItem from="1702755388337" duration="646000" />
-      <workItem from="1702757329405" duration="4209000" />
-    </task>
-    <task id="LOCAL-00057" summary="Works, so refactoring">
-      <option name="closed" value="true" />
-      <created>1702413921067</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1702413921067</updated>
+      <workItem from="1702757329405" duration="6193000" />
     </task>
     <task id="LOCAL-00058" summary="adding X letter">
       <option name="closed" value="true" />
@@ -599,7 +591,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702759832550</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Update redirect URL and cleanup .idea/workspace.xml &#10;&#10;The redirect URL is now constructed dynamically from an environment variable, improving flexibility across deployments. Also, unnecessary or outdated details in .idea/workspace.xml have been removed, improving the clarity and maintainability of this file.">
+      <option name="closed" value="true" />
+      <created>1702802692688</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1702802692688</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +620,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="use url, not short url" />
     <MESSAGE value="default redirect URLS" />
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="fix" />
@@ -645,7 +644,8 @@
     <MESSAGE value="Remove json sample files and helpers.py script&#10;&#10;Removed unnecessary JSON sample files and a Python script named 'helpers.py'. These were either unused or obsolete, which did not contribute to the main action of the application. The removal helps to reduce clutter and improve maintainability of the project." />
     <MESSAGE value="Update instructions for setting environment variables&#10;&#10;Revised the instructions in README.md on how to set environment variables, specifying that users can use Digital Ocean Apps Platform's built-in functionality. Made changes to .idea/workspace.xml to reflect the removal of json sample files and a Python script named 'helpers.py' for improved project maintainability." />
     <MESSAGE value="Update README with detailed documentation on routes and functions&#10;&#10;The README is updated with comprehensive descriptions of each route and function in the application, including diagrams illustrating the project's architecture. This documentation enhances clarity and aids in easier future development and maintenance of the code base." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README with detailed documentation on routes and functions&#10;&#10;The README is updated with comprehensive descriptions of each route and function in the application, including diagrams illustrating the project's architecture. This documentation enhances clarity and aids in easier future development and maintenance of the code base." />
+    <MESSAGE value="Update redirect URL and cleanup .idea/workspace.xml &#10;&#10;The redirect URL is now constructed dynamically from an environment variable, improving flexibility across deployments. Also, unnecessary or outdated details in .idea/workspace.xml have been removed, improving the clarity and maintainability of this file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update redirect URL and cleanup .idea/workspace.xml &#10;&#10;The redirect URL is now constructed dynamically from an environment variable, improving flexibility across deployments. Also, unnecessary or outdated details in .idea/workspace.xml have been removed, improving the clarity and maintainability of this file." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bml_flask_pabbly$xtestx_app.coverage" NAME="xtestx_app Coverage Results" MODIFIED="1702738140223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
