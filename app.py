@@ -195,6 +195,10 @@ def bml_hook():
             error_logging("Transaction was cancelled")
             raise Exception("Transaction was cancelled")
 
+        elif transaction["state"] == "QR_CODE_GENERATED":
+            return error_logging("QR Code was generated for transaction")
+
+
         else:
             error_logging("Invalid transaction state: " + str(transaction["state"]))
             raise Exception("Invalid transaction state: " + str(transaction["state"]))
