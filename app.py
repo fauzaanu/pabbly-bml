@@ -79,7 +79,7 @@ def process_subscription_pabbly():
     # Extract relevant data
     _subscription = api_data["subscription"]
     invoice = api_data["invoice"]
-    amount = _subscription["amount"]
+    amount = invoice["charge_amount"]
     invoice_id = invoice["id"]
     amount *= 100  # because cents
 
