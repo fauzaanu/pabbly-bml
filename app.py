@@ -95,15 +95,6 @@ def process_subscription_pabbly():
         "redirectUrl": str(os.getenv("DOMAIN")) + "/thankyou"
     }
 
-    username, password = os.getenv('PABBLY_USERNAME'), os.getenv('PABBLY_PASSWORD')
-
-    # Create instances of the APIs
-    error_logging("Username: " + username)
-    error_logging("Password: " + password)
-
-
-    error_logging("Hosted Page Data: " + str(hosted_page))
-
     error_logging("Creating BML Transaction: " + str(payload))
 
     transaction = bml_instance.create_transaction(payload)
@@ -197,7 +188,6 @@ def bml_hook():
 
         elif transaction["state"] == "QR_CODE_GENERATED":
             return error_logging("QR Code was generated for transaction")
-
 
         else:
             error_logging("Invalid transaction state: " + str(transaction["state"]))

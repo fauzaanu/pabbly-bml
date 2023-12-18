@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="Update charge amount extraction and add Pabbly logging&#10;&#10;Refactored how the charge amount is extracted from a subscription by using the invoice instead. Also, added">
+    <list default="true" id="e2f9bd92-de8d-4680-ba2f-0069e78a00f1" name="Changes" comment="log when hook recieves stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
@@ -208,15 +208,7 @@
       <workItem from="1702757329405" duration="6801000" />
       <workItem from="1702810835442" duration="636000" />
       <workItem from="1702817759878" duration="78000" />
-      <workItem from="1702918551471" duration="1443000" />
-    </task>
-    <task id="LOCAL-00063" summary="redirect url">
-      <option name="closed" value="true" />
-      <created>1702496926160</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1702496926160</updated>
+      <workItem from="1702918551471" duration="1573000" />
     </task>
     <task id="LOCAL-00064" summary="Key error">
       <option name="closed" value="true" />
@@ -602,7 +594,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702919929043</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="log when hook recieves stuff">
+      <option name="closed" value="true" />
+      <created>1702920026019</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1702920026019</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -623,7 +623,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix redirect url" />
     <MESSAGE value="pretend" />
     <MESSAGE value="Update function documentation and user guide in README&#10;&#10;The update significantly improves the documentation for several functions in 'app.py', providing a much clearer understanding of their operation. The README.md file's instructions for app deployment and usage have also been modified to suit the specific features of the BML Payment Integration application." />
     <MESSAGE value="Update README to reflect BML Payment Integration&#10;&#10;The existing README content has been replaced with specific instructions and details about the deployment and usage of the BML Payment Integration application. It now includes clearer setup steps, the necessary environment variables, and a description of how the application handles transactions." />
@@ -648,7 +647,8 @@
     <MESSAGE value="grab hosted page data" />
     <MESSAGE value="Add logging for Pabbly credentials&#10;&#10;A logging mechanism has been incorporated for Pabbly username and password. This is crucial for tracking and ensuring correct data retrieval from environment variables essential for API instances. Details related to 'grabbing hosted page data'" />
     <MESSAGE value="Update charge amount extraction and add Pabbly logging&#10;&#10;Refactored how the charge amount is extracted from a subscription by using the invoice instead. Also, added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update charge amount extraction and add Pabbly logging&#10;&#10;Refactored how the charge amount is extracted from a subscription by using the invoice instead. Also, added" />
+    <MESSAGE value="log when hook recieves stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="log when hook recieves stuff" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bml_flask_pabbly$xtestx_app.coverage" NAME="xtestx_app Coverage Results" MODIFIED="1702738140223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
