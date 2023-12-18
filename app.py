@@ -95,6 +95,8 @@ def process_subscription_pabbly():
         "redirectUrl": str(os.getenv("DOMAIN")) + "/thankyou"
     }
 
+    error_logging("Creating BML Transaction: " + str(payload))
+
     transaction = bml_instance.create_transaction(payload)
     if transaction.status_code == 201:
         transaction = transaction.json()
