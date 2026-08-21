@@ -1,4 +1,3 @@
-import json
 import os
 
 import requests
@@ -23,12 +22,11 @@ class Subscription:
 
     def hostedPage(self, hostedpage):
 
-        payload = {
-            "hostedpage": f"{hostedpage}"
-        }
+        payload = {"hostedpage": f"{hostedpage}"}
 
-        response = requests.request("POST", self.apiPath('hostedpage'), json=payload, headers=self.headers,
-                                    auth=(self.username, self.password))
+        response = requests.request(
+            "POST", self.apiPath("hostedpage"), json=payload, headers=self.headers, auth=(self.username, self.password)
+        )
 
         if response.status_code != 200:
             raise UnknownResponse(response.text)
@@ -43,7 +41,7 @@ class Subscription:
         :return:
         :rtype:
         """
-        response = requests.post(self.apiPath('subscription'), auth=(self.username, self.password), data=data)
+        response = requests.post(self.apiPath("subscription"), auth=(self.username, self.password), data=data)
         if response.status_code != 200:
             raise UnknownResponse(response.text)
         return response.json()
@@ -52,33 +50,29 @@ class Subscription:
         """
         Record the payment, return the product id
         """
-        response = requests.post(self.apiPath('invoice/recordpayment/' + invoice_id),
-                                 auth=(self.username, self.password), data={
-                'payment_mode': payment_mode,
-                'payment_note': payment_note,
-                'transaction': transaction_data
-            })
+        response = requests.post(
+            self.apiPath("invoice/recordpayment/" + invoice_id),
+            auth=(self.username, self.password),
+            data={"payment_mode": payment_mode, "payment_note": payment_note, "transaction": transaction_data},
+        )
         if response.status_code == 200:
             response = response.json()
-            product_id = response['data']['product']['id']
+            product_id = response["data"]["product"]["id"]
             return product_id
         else:
             raise UnknownResponse(response.text)
 
     def redirect(self, productId: str):
         # https://payments.pabbly.com/api/v1/checkoutpage/6557ba7dd851d8cbc68570e8
-        response = requests.get(self.apiPath('checkoutpage/' + productId), auth=(self.username, self.password))
+        response = requests.get(self.apiPath("checkoutpage/" + productId), auth=(self.username, self.password))
         if response.status_code == 200:
             response = response.json()
             try:
-                redirectUrl = response['data'][0]['redirect_url']
-                return redirectUrl
-            except:
-                redirectUrl = os.getenv('DEFAULT_REDIRECT_URL')
-                return redirectUrl
+                return response["data"][0]["redirect_url"]
+            except (KeyError, IndexError, TypeError):
+                return os.getenv("DEFAULT_REDIRECT_URL")
         else:
-            return 'NONE'
-
+            return "NONE"
 
     def get_plancode(self, productId: str):
         """
@@ -101,21 +95,19 @@ class Subscription:
             # Get the plan code for a product with ID 'example_id'
             plan_code = obj.get_plancode('example_id')
         """
-        response = requests.get(self.apiPath('checkoutpage/' + productId), auth=(self.username, self.password))
+        response = requests.get(self.apiPath("checkoutpage/" + productId), auth=(self.username, self.password))
         if response.status_code == 200:
-            response = response.json()
-            if response['status'] != 'success':
-                raise Exception('Error: ' + str(response.text))
+            body = response.json()
+            if body["status"] != "success":
+                raise Exception("Error: " + str(body))
             try:
-                plan_code = response['data'][0]['plan_code']
-                return plan_code
-            except:
-                raise Exception('Error: ' + str(response.text))
+                return body["data"][0]["plan_code"]
+            except (KeyError, IndexError, TypeError) as exc:
+                raise Exception("Error: " + str(body)) from exc
         else:
-            return 'NONE'
+            return "NONE"
 
-
-    def payment_status(self, invoice_id:str):
+    def payment_status(self, invoice_id: str):
         """
         Get the payment status
         :param invoice_id: invoice id from pabbly
@@ -124,17 +116,18 @@ class Subscription:
         :rtype: str, str
         """
         # check payment status from pabbly
-        response = requests.get(self.apiPath('invoices/transactions/' + invoice_id),
-                                      auth=(self.username, self.password))
+        response = requests.get(
+            self.apiPath("invoices/transactions/" + invoice_id), auth=(self.username, self.password)
+        )
         if response.status_code == 200:
             invoice_status = response.json()
             status = invoice_status["message"][0]["status"]
             product_id = invoice_status["message"][0]["product_id"]
             return status, product_id
         else:
-            raise Exception('Error: ' + str(response.status_code) + ': ' + str(response.text))
+            raise Exception("Error: " + str(response.status_code) + ": " + str(response.text))
 
-    def get_customer_id(self, invoice_id:str):
+    def get_customer_id(self, invoice_id: str):
         """
         Gets the customer ID and product ID associated with a given invoice ID.
 
@@ -148,18 +141,19 @@ class Subscription:
             Exception: If there is an error while retrieving the invoice data.
         """
         # Get invoice data from pabbly
-        response = requests.get(self.apiPath('invoice/' + invoice_id),
-                                auth=(self.username, self.password))
+        response = requests.get(self.apiPath("invoice/" + invoice_id), auth=(self.username, self.password))
         if response.status_code == 200:
             invoice_data = response.json()
-            customer_id = invoice_data.get('data').get('customer_id')
-            product_id = invoice_data.get('data').get('product_id')
-            return product_id, customer_id,
+            customer_id = invoice_data.get("data").get("customer_id")
+            product_id = invoice_data.get("data").get("product_id")
+            return (
+                product_id,
+                customer_id,
+            )
         else:
-            raise Exception('Error: ' + str(response.status_code) + ': ' + str(response.text))
+            raise Exception("Error: " + str(response.status_code) + ": " + str(response.text))
 
-
-    def get_customer_details(self, customer_id:str):
+    def get_customer_details(self, customer_id: str):
         """
         Get the customer details
         :param customer_id: customer id from pabbly
@@ -168,20 +162,15 @@ class Subscription:
         :rtype: str, str, str
         """
         # Get customer data from pabbly
-        response = requests.get(self.apiPath('customer/' + customer_id),
-                                auth=(self.username, self.password))
+        response = requests.get(self.apiPath("customer/" + customer_id), auth=(self.username, self.password))
         if response.status_code == 200:
             customer_data = response.json()
-            first_name = customer_data.get('data').get('first_name')
-            last_name = customer_data.get('data').get('last_name')
-            email_id = customer_data.get('data').get('email_id')
+            first_name = customer_data.get("data").get("first_name")
+            last_name = customer_data.get("data").get("last_name")
+            email_id = customer_data.get("data").get("email_id")
             return first_name, last_name, email_id
         else:
-            raise Exception('Error: ' + str(response.status_code) + ': ' + str(response.text))
-
-
-
-
+            raise Exception("Error: " + str(response.status_code) + ": " + str(response.text))
 
     # def activateTrialSubscription(self, subscription_id):
     #     if not subscription_id:

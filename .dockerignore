@@ -1,0 +1,17 @@
+.git/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.idea/
+.vscode/
+.railway/
+.ruff_cache/
+.pytest_cache/
+tests/
+.README_images/
+README.md
+LICENSE
+Dockerfile
+.dockerignore

@@ -9,16 +9,12 @@ class BankofmaldivesAPI:
         else:
             self.base_api_url = "https://api.merchants.bankofmaldives.com.mv"
 
-        self.headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": api_key
-        }
+        self.headers = {"Content-Type": "application/json", "Accept": "application/json", "Authorization": api_key}
 
     def api_path(self, path):
         return self.base_api_url + path
 
-    def get_transaction(self,transaction_id):
+    def get_transaction(self, transaction_id):
         """
         Get transaction data from bml
         :param transaction_id:

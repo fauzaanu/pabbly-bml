@@ -1,77 +1,72 @@
 """
 This is the main file for the flask app.
 """
-import os
-import requests
-from flask import Flask, request, redirect
-from flask.cli import load_dotenv
 
-from Subscriptions.subscription import Subscription
+import os
+
+import requests
+from dotenv import load_dotenv
+from flask import Flask, redirect, request
+
 from bankofmaldives.bankofmaldives import BankofmaldivesAPI
-from xperiencify.exceptions import InvalidMagicLink
-from xperiencify.redirect import create_student
+from Subscriptions.subscription import Subscription
 
 app = Flask(__name__)
 
 # Load the environment variables from .env file
 load_dotenv()
 
+
+def require_env(name):
+    """Read a required environment variable, failing loudly at startup if it is missing."""
+    value = os.getenv(name)
+    if not value:
+        raise RuntimeError(f"Required environment variable {name} is not set. See README.md.")
+    return value
+
+
+BML_API_KEY = require_env("BML_API_KEY")
+PABBLY_USERNAME = require_env("PABBLY_USERNAME")
+PABBLY_PASSWORD = require_env("PABBLY_PASSWORD")
+DEFAULT_REDIRECT_URL = require_env("DEFAULT_REDIRECT_URL")
+TELEGRAM_BOT_TOKEN = require_env("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = require_env("TELEGRAM_CHAT_ID")
+DOMAIN = require_env("DOMAIN")
+
 # Create instances of the APIs
-bml_instance = BankofmaldivesAPI(os.getenv('BML_API_KEY'))
-pabbly_instance = Subscription(os.getenv('PABBLY_USERNAME'), os.getenv('PABBLY_PASSWORD'))
+bml_instance = BankofmaldivesAPI(BML_API_KEY)
+pabbly_instance = Subscription(PABBLY_USERNAME, PABBLY_PASSWORD)
 
 
 def error_logging(message):
-    """
+    """Send a message to the configured Telegram chat, wrapped in a code block.
 
-    This method sends an error message to a specific Telegram chat using the Telegram Bot API.
-
-    Parameters:
-    - message (str): The error message to be sent.
-
-    Returns:
-    - True: If the error message was successfully sent to the Telegram chat.
-
-    Example usage:
-        error_logging("An error occurred while processing the data.")
-
-    Please make sure to set the environment variables TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID before using this method.
-
+    Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID to be set.
     """
 
     # send in markdown format with code block
     message = "``` " + "\n" + message + "\n" + " ```"
 
-    requests.post("https://api.telegram.org/bot" + os.getenv('TELEGRAM_BOT_TOKEN') + "/sendMessage?parse_mode=Markdown",
-                  data={'chat_id': os.getenv('TELEGRAM_CHAT_ID'), 'text': message})
+    requests.post(
+        "https://api.telegram.org/bot" + TELEGRAM_BOT_TOKEN + "/sendMessage?parse_mode=Markdown",
+        data={"chat_id": TELEGRAM_CHAT_ID, "text": message},
+    )
 
     return True
 
 
-@app.route('/pabbly', methods=['GET'])  # DONT ASK WHY LOL
+@app.route("/pabbly", methods=["GET"])  # DONT ASK WHY LOL
 def process_subscription_pabbly():
-    """
+    """Start a BML payment for a Pabbly hosted page.
 
-    Process Subscription Pabbly
-
-    This method handles the processing of a subscription through Pabbly payment gateway. It extracts relevant data from the API response, prepares a payload for the BML payment gateway,
-    * and redirects the user to the BML payment URL.
-
-    Parameters:
-        None
-
-    Returns:
-        None
+    Reads the hosted page from Pabbly, converts the invoice into a BML transaction
+    payload, and redirects the customer to the BML payment URL.
 
     Raises:
-        Exception: If there is an invalid response from the BML payment gateway.
-
-    Example:
-        This method is typically used as a route handler for the '/pabbly.php' endpoint in a Flask application.
-
+        Exception: if BML does not return a 201.
     """
     # Get hosted page details
-    hosted_page = request.args.get('hostedpage')
+    hosted_page = request.args.get("hostedpage")
     api_data = pabbly_instance.hostedPage(hosted_page)
     api_data = api_data.json()
     api_data = api_data["data"]
@@ -87,12 +82,8 @@ def process_subscription_pabbly():
         "amount": amount,
         "currency": "MVR",
         "localId": invoice_id,
-        "tokenizationDetails": {
-            "tokenize": False,
-            "paymentType": "UNSCHEDULED",
-            "recurringFrequency": "UNSCHEDULED"
-        },
-        "redirectUrl": str(os.getenv("DOMAIN")) + "/thankyou"
+        "tokenizationDetails": {"tokenize": False, "paymentType": "UNSCHEDULED", "recurringFrequency": "UNSCHEDULED"},
+        "redirectUrl": DOMAIN + "/thankyou",
     }
 
     error_logging("Creating BML Transaction: " + str(payload))
@@ -109,38 +100,32 @@ def process_subscription_pabbly():
 
 
 def record_payment(transaction_id):
-    """
+    """Record a completed BML payment against its Pabbly invoice.
 
-    Record Payment
-
-    Queries the transaction to get the local ID and records the payment if it hasn't been recorded already.
-
-    Parameters:
-    - transaction_id (str): The ID of the transaction
+    The BML transaction carries the Pabbly invoice id in ``localId``. Recording is
+    skipped if the invoice is already marked paid, so this is safe to call twice.
 
     Returns:
-    - product_id (str): The ID of the product associated with the payment
+        str: the Pabbly product id for the invoice.
 
     Raises:
-    - Exception: If the API call to get the transaction data is unsuccessful or if the invoice status is invalid
-
+        Exception: if BML rejects the lookup or the invoice is in an unexpected state.
     """
     # Query the transaction to get the local id
     transaction_data = bml_instance.get_transaction(transaction_id)
 
     if transaction_data.status_code == 200:
         transaction_data = transaction_data.json()
-        pabbly_invoice_id = transaction_data['localId']  # localId was set to invoice id we got from pabbly
+        pabbly_invoice_id = transaction_data["localId"]  # localId was set to invoice id we got from pabbly
         pabbly_invoice_status, product_id = pabbly_instance.payment_status(pabbly_invoice_id)
 
-        if pabbly_invoice_status == "success":  # payment was already recorded, therefore we can just return the product id
+        if pabbly_invoice_status == "success":  # already recorded; just hand back the product id
             return product_id
 
-        elif pabbly_invoice_status == "created":  # payment want recorded, so we record it
+        elif pabbly_invoice_status == "created":  # not recorded yet, so record it now
             # Invoice hasn't been paid yet, so we record the payment
             payment_mode, transaction_data, payment_note = "BML", "Transaction Completed", "Payment Success"
-            product_id = pabbly_instance.recordPayment(pabbly_invoice_id, payment_mode, payment_note,
-                                                       transaction_data)
+            product_id = pabbly_instance.recordPayment(pabbly_invoice_id, payment_mode, payment_note, transaction_data)
             return product_id
         else:
             error_logging("Invalid invoice status: " + pabbly_invoice_status)
@@ -152,76 +137,57 @@ def record_payment(transaction_id):
         raise Exception("Invalid transaction data: " + str(transaction_data))
 
 
-@app.route('/hook', methods=['POST'])
+@app.route("/hook", methods=["POST"])
 def bml_hook():
+    """Webhook BML calls when a transaction changes state.
+
+    Confirms the state with BML directly rather than trusting the payload, then
+    records the payment. BML retries any non-2xx response.
     """
-    This method is the endpoint for a webhook that handles BML transaction events.
+    webhook_data = request.get_json(silent=True) or {}
+    transaction_id = webhook_data.get("transactionId")
+    if not transaction_id:
+        error_logging("Webhook received without a transactionId: " + str(webhook_data))
+        return "Missing transactionId", 400
 
-    Parameters:
-        None
-
-    Returns:
-        None
-
-    Raises:
-        Exception: If the transaction state is "CANCELLED" or an invalid state.
-
-    Note:
-        This method is an endpoint for a Flask route and must be decorated with the `@app.route` decorator.
-
-    Example Usage:
-        The `bml_hook()` method will be called when a POST request is made to the '/hook' route.
-    """
-    # Create instances of the APIs
-    webhook_data = request.json
-    transaction_id = webhook_data['transactionId']
     transaction = bml_instance.get_transaction(transaction_id)
 
-    if transaction.status_code == 200:
-        transaction = transaction.json()
-        if transaction["state"] == "CONFIRMED":
-            return record_payment(transaction_id)
+    if transaction.status_code != 200:
+        error_logging("Invalid transaction data: " + str(transaction.text))
+        raise Exception("Invalid transaction data: " + str(transaction.text))
 
-        elif transaction["state"] == "CANCELLED":
-            error_logging("Transaction was cancelled")
-            raise Exception("Transaction was cancelled")
+    transaction = transaction.json()
+    state = transaction["state"]
 
-        elif transaction["state"] == "QR_CODE_GENERATED":
-            return error_logging("QR Code was generated for transaction")
+    if state == "CONFIRMED":
+        return record_payment(transaction_id)
 
-        else:
-            error_logging("Invalid transaction state: " + str(transaction["state"]))
-            raise Exception("Invalid transaction state: " + str(transaction["state"]))
+    elif state == "CANCELLED":
+        error_logging("Transaction was cancelled")
+        raise Exception("Transaction was cancelled")
+
+    elif state == "QR_CODE_GENERATED":
+        # Informational only -- BML retries any non-2xx, so acknowledge it.
+        error_logging("QR Code was generated for transaction")
+        return "QR_CODE_GENERATED", 200
+
+    else:
+        error_logging("Invalid transaction state: " + str(state))
+        raise Exception("Invalid transaction state: " + str(state))
 
 
-@app.route('/thankyou', methods=['GET'])
+@app.route("/thankyou", methods=["GET"])
 def thankyou():
+    """Landing route BML redirects the customer to after payment.
+
+    The ``state`` query parameter is treated as a hint only -- the transaction is
+    re-checked against BML before anything is recorded. On success the customer is
+    sent to the product's configured redirect URL, otherwise to DEFAULT_REDIRECT_URL.
     """
-    This method handles the /thankyou.php route with a GET request.
-
-    Returns:
-        - If the `state` parameter is "CONFIRMED", it checks with bml servers to confirm the payment. If the transaction state is "CONFIRMED", it records the payment, generates a redirect
-    * URL using the Pabbly instance, and redirects the user to that URL. If the transaction state is "CANCELLED", it logs an error and redirects the user to the default redirect URL. If
-    * the transaction state is neither "CONFIRMED" nor "CANCELLED", it logs an error and raises an exception with the invalid state.
-
-        - If the `state` parameter is "CANCELLED", it returns the string "CANCELLED".
-
-        - If the `state` parameter is not provided or is invalid, it logs an error and redirects the user to the default redirect URL.
-
-    Parameters:
-        - None
-
-    Example usage:
-        @app.route('/thankyou.php', methods=['GET'])
-        def thankyou():
-            ...
-    """
-    product_based_redirect_url = None
-
     # Get the get parameters
     # signature = request.args.get('signature')
-    transactionId_param = request.args.get('transactionId')
-    state_param = request.args.get('state')
+    transactionId_param = request.args.get("transactionId")
+    state_param = request.args.get("state")
 
     if state_param == "CONFIRMED":
         # The Get Param says the payment was successful, so we check with bml servers to confirm
@@ -231,82 +197,51 @@ def thankyou():
         if transaction["state"] == "CONFIRMED":
             product_id = record_payment(transactionId_param)
             redirect_url = pabbly_instance.redirect(product_id)
-            if redirect_url == "NONE":
-                redirect_url = os.getenv('DEFAULT_REDIRECT_URL')
-            else:
-                product_based_redirect_url = redirect_url
-
-            # if experiencify api key is in env, create student
-            if os.getenv("XPERIENCIFY_API_KEY"):
-                pabbly_invoice_id = transaction['localId']
-                product_id, customer_id = pabbly_instance.get_customer_id(pabbly_invoice_id)
-                product_code = pabbly_instance.get_plancode(product_id)
-                fname, lname, email = pabbly_instance.get_customer_details(customer_id)
-
-                try:
-                    redirect_url = create_student(os.getenv("XPERIENCIFY_API_KEY"), email, fname, lname,
-                                                  course_id=product_code, )
-                    if not redirect_url.startswith("https://"):
-                        error_logging("Invalid magic link, falling back")
-                        error_logging(redirect_url)
-                        if product_based_redirect_url:
-                            redirect_url = product_based_redirect_url
-                        else:
-                            redirect_url = os.getenv('DEFAULT_REDIRECT_URL')
-                except InvalidMagicLink:
-                    error_logging("Invalid magic link, defaulting back to default redirect url")
-                    redirect_url = os.getenv('DEFAULT_REDIRECT_URL')
+            if not redirect_url or redirect_url == "NONE":
+                redirect_url = DEFAULT_REDIRECT_URL
 
             error_logging("Redirecting to: " + redirect_url)
             return redirect(redirect_url)
 
         elif transaction["state"] == "CANCELLED":
             error_logging("Transaction was cancelled")
-            return redirect(os.getenv('DEFAULT_REDIRECT_URL'))
+            return redirect(DEFAULT_REDIRECT_URL)
 
         else:
             error_logging("Invalid transaction state: " + transaction["state"])
             raise Exception("Invalid transaction state: " + transaction["state"])
 
     elif state_param == "CANCELLED":
-        return 'CANCELLED'
+        return "CANCELLED"
 
     else:
         error_logging("State param is None, redirecting to default redirect url")
-        return redirect(os.getenv('DEFAULT_REDIRECT_URL'))
+        return redirect(DEFAULT_REDIRECT_URL)
 
 
-@app.route('/', methods=['GET'])
+@app.route("/", methods=["GET"])
 def index():
-    """
-    This method is the endpoint for the root route.
+    """Log the incoming request to Telegram and redirect to DEFAULT_REDIRECT_URL."""
 
-    Parameters:
-        None
-
-    Returns:
-        None
-
-    Raises:
-        None
-
-    Note:
-        This method is an endpoint for a Flask route and must be decorated with the `@app.route` decorator.
-
-    Example Usage:
-        The `index()` method will be called when a GET request is made to the '/' route.
-    """
-
-    user_agent = request.headers.get('User-Agent')
+    user_agent = request.headers.get("User-Agent")
     ip = request.remote_addr
-    cloudflare = request.headers.get('CF-Connecting-IP')
-    forwarded_for = request.headers.get('X-Forwarded-For')
-    forwarded_proto = request.headers.get('X-Forwarded-Proto')
-    forwarded_host = request.headers.get('X-Forwarded-Host')
-    log = f"User Agent: {user_agent}\nIP: {ip}\nCloudflare: {cloudflare}\nForwarded For: {forwarded_for}\nForwarded Proto: {forwarded_proto}\nForwarded Host: {forwarded_host}"
+    cloudflare = request.headers.get("CF-Connecting-IP")
+    forwarded_for = request.headers.get("X-Forwarded-For")
+    forwarded_proto = request.headers.get("X-Forwarded-Proto")
+    forwarded_host = request.headers.get("X-Forwarded-Host")
+    log = "\n".join(
+        [
+            f"User Agent: {user_agent}",
+            f"IP: {ip}",
+            f"Cloudflare: {cloudflare}",
+            f"Forwarded For: {forwarded_for}",
+            f"Forwarded Proto: {forwarded_proto}",
+            f"Forwarded Host: {forwarded_host}",
+        ]
+    )
 
     error_logging(log)
-    return redirect(os.getenv('DEFAULT_REDIRECT_URL'))
+    return redirect(DEFAULT_REDIRECT_URL)
 
 
 # as app starts, send a message to telegram
