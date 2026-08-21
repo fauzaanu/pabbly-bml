@@ -11,11 +11,10 @@ class TestIndex:
         assert response.status_code == 302
         assert response.headers["Location"] == env["DEFAULT_REDIRECT_URL"]
 
-    def test_logs_request_metadata(self, client, telegram):
-        client.get("/", headers={"User-Agent": "probe/1.0", "CF-Connecting-IP": "203.0.113.7"})
-        sent = telegram.call_args.kwargs["data"]["text"]
-        assert "probe/1.0" in sent
-        assert "203.0.113.7" in sent
+    def test_is_silent(self, client, telegram):
+        """Anyone can find the root path -- crawler hits must not reach Telegram."""
+        client.get("/", headers={"User-Agent": "crawler/1.0", "CF-Connecting-IP": "203.0.113.7"})
+        telegram.assert_not_called()
 
 
 class TestPabbly:
@@ -123,4 +122,13 @@ class TestHealth:
         """A healthcheck runs constantly -- it must never reach Telegram."""
         for _ in range(5):
             client.get("/health")
+        telegram.assert_not_called()
+
+
+class TestCrawlerSilence:
+    """Public GET paths must not report to Telegram -- anyone can find them."""
+
+    def test_public_paths_send_nothing(self, client, telegram):
+        for path in ("/", "/health", "/thankyou"):
+            client.get(path)
         telegram.assert_not_called()
