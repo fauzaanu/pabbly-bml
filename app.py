@@ -244,5 +244,11 @@ def index():
     return redirect(DEFAULT_REDIRECT_URL)
 
 
+@app.route("/health", methods=["GET"])
+def health():
+    """Liveness probe. Deliberately silent -- safe to poll on a short interval."""
+    return {"status": "ok"}, 200
+
+
 # as app starts, send a message to telegram
 error_logging("APP STARTED")

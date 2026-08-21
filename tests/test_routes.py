@@ -111,3 +111,16 @@ class TestThankyou:
     def test_missing_state_redirects_to_default(self, client, env):
         response = client.get("/thankyou")
         assert response.headers["Location"] == env["DEFAULT_REDIRECT_URL"]
+
+
+class TestHealth:
+    def test_returns_ok(self, client):
+        response = client.get("/health")
+        assert response.status_code == 200
+        assert response.get_json() == {"status": "ok"}
+
+    def test_is_silent(self, client, telegram):
+        """A healthcheck runs constantly -- it must never reach Telegram."""
+        for _ in range(5):
+            client.get("/health")
+        telegram.assert_not_called()
