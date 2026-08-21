@@ -18,7 +18,8 @@ invoice and forwards the customer to wherever that product is configured to land
 | `/pabbly` | GET | Entry point. Takes a `hostedpage` id, opens a BML transaction, redirects to BML's payment URL. |
 | `/hook` | POST | BML's webhook. Re-checks the transaction with BML, then records the payment. |
 | `/thankyou` | GET | Where BML returns the customer. Verifies the payment, records it, redirects onward. |
-| `/` | GET | Logs the request to Telegram and redirects to `DEFAULT_REDIRECT_URL`. |
+| `/health` | GET | Liveness probe. Returns `{"status": "ok"}` and logs nothing. |
+| `/` | GET | Redirects to `DEFAULT_REDIRECT_URL`. Logs nothing. |
 
 `/hook` and `/thankyou` both confirm state directly with BML rather than trusting the incoming
 parameters, and recording is idempotent — an invoice already marked paid is never charged twice.
@@ -51,7 +52,7 @@ Then set the variables above in the service's **Variables** tab, generate a doma
 The container listens on `$PORT` and runs as a non-root user. It runs anywhere Docker does —
 Railway is just what's wired up out of the box.
 
-> Do not point a healthcheck at `/`. That route sends a Telegram message on every request.
+Healthchecks go to `/health`, which is already set in [`railway.json`](railway.json).
 
 ### Wiring it up
 
@@ -84,7 +85,8 @@ Run it locally with `uv run flask --app app run --debug`, or exactly as it runs 
 
 ## Errors
 
-Everything is reported to the Telegram chat you configure. If nothing arrives, check the service's
+Payment failures are reported to the Telegram chat you configure. Public paths (`/` and `/health`)
+stay silent so crawler traffic cannot flood it. If nothing arrives, check the service's
 **Deployments → Logs** in the Railway dashboard.
 
 ## License

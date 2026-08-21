@@ -215,33 +215,25 @@ def thankyou():
         return "CANCELLED"
 
     else:
-        error_logging("State param is None, redirecting to default redirect url")
+        # Reachable by anyone who finds the domain, so this stays silent too. A real
+        # customer always arrives here with a state from BML.
         return redirect(DEFAULT_REDIRECT_URL)
 
 
 @app.route("/", methods=["GET"])
 def index():
-    """Log the incoming request to Telegram and redirect to DEFAULT_REDIRECT_URL."""
+    """Redirect to DEFAULT_REDIRECT_URL.
 
-    user_agent = request.headers.get("User-Agent")
-    ip = request.remote_addr
-    cloudflare = request.headers.get("CF-Connecting-IP")
-    forwarded_for = request.headers.get("X-Forwarded-For")
-    forwarded_proto = request.headers.get("X-Forwarded-Proto")
-    forwarded_host = request.headers.get("X-Forwarded-Host")
-    log = "\n".join(
-        [
-            f"User Agent: {user_agent}",
-            f"IP: {ip}",
-            f"Cloudflare: {cloudflare}",
-            f"Forwarded For: {forwarded_for}",
-            f"Forwarded Proto: {forwarded_proto}",
-            f"Forwarded Host: {forwarded_host}",
-        ]
-    )
-
-    error_logging(log)
+    Deliberately silent: this path is reachable by anyone who finds the domain, so
+    reporting hits to Telegram just means crawler traffic floods the chat.
+    """
     return redirect(DEFAULT_REDIRECT_URL)
+
+
+@app.route("/health", methods=["GET"])
+def health():
+    """Liveness probe. Deliberately silent -- safe to poll on a short interval."""
+    return {"status": "ok"}, 200
 
 
 # as app starts, send a message to telegram
